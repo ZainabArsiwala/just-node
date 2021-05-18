@@ -5,7 +5,6 @@ const nodefetch=require('node-fetch')
 app.set('view engine', 'ejs'); 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
-//app.use(express.static('C:\Users\dell\Desktop\my CRUD app\public\style.css' + '/public'));
 var http = require('http');
 app.use(bodyParser.json())
 app.listen(3000, function() {
@@ -13,7 +12,7 @@ app.listen(3000, function() {
   })
  
   const MongoClient = require('mongodb').MongoClient
-  MongoClient.connect('mongodb+srv://dbBook:BookStorage@cluster0.xhp4t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  MongoClient.connect('mongodb+srv://<database_name>:<password>@cluster0.xhp4t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   {
     useUnifiedTopology: true
   },
@@ -32,10 +31,8 @@ app.listen(3000, function() {
   })
 
   app.get('/', (req, res) => {
-    //res.sendFile('C:/Users/dell/Desktop/my CRUD app' + '/index.html')
   
     const cursor =db.collection('books').find().toArray().then(result => {
-          //console.log(result)
           res.render('index.ejs', {books: result})
       })
       .catch(error => console.error(error))
@@ -43,7 +40,7 @@ app.listen(3000, function() {
   })
   
   app.put('/books', (req, res) => {
-    //console.log(req.body)
+   
 
   booksCollection.findOneAndUpdate(
     //query,
