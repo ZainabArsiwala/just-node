@@ -16,3 +16,9 @@ npm install
 All the dependencies of the project will be installed 
 
 Your project is running on localhost 3000.!😉
+#### Database
+
+For database I've used MongoDb. To add Mongodb do the following steps : 
+1) Go to Mongo Atlas
+2) Create a cluster or use the already existing one (if any)
+3) connect your databse by providing database name and password in ``` server.js``` file
